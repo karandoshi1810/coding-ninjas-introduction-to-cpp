@@ -1,0 +1,19 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+int main() {
+	// Write your code here
+	int x=0,n=0;
+    cin>>x>>n;
+    if(x==0 && n==0 || x==1 && n==0)
+    {
+        cout<<"1"<<endl;
+    }
+    else
+    {
+        int r = pow(x,n);
+        cout<<r<<endl;
+    }
+    
+}
