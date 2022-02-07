@@ -1,0 +1,29 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+int main() {
+	// Write your code here
+	
+    int num;
+    char A;
+    float a = 0;
+    cin>>num>>A;
+    
+    if(A==65)
+    {
+        a=1700;
+    }
+    else if(A==66)
+    {
+        a=1500;
+    }
+    else
+    {
+        a=1300;
+    }
+    
+    float b = (1.59*num)+a;
+    int c = round(b);
+    cout<<c;
+}
