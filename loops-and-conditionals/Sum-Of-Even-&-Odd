@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+	// Write your code here
+    int n=0,evenSum=0,oddSum=0;
+    cin>>n;
+    
+    while(n!=0)
+    {
+        int num = n%10;
+        if(num%2==0)
+        {
+            evenSum+=num;
+        }
+        else{
+            oddSum+=num;
+        }
+        n/=10;
+    }
+	cout<<evenSum<<" "<<oddSum<<endl;
+}
