@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+	// Write your code here
+    char ipt;
+    cin>>ipt;
+    
+    if(ipt>='A' && ipt<='Z')
+    {
+        cout<<"1"<<endl;
+    }
+    else if(ipt>='a' && ipt<='z')
+    {
+        cout<<"0"<<endl;
+    }
+    else
+    {
+        cout<<"-1"<<endl;
+    }
+	
+}
