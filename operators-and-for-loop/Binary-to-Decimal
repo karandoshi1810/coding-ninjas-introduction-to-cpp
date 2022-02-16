@@ -1,0 +1,19 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+
+int main() {
+	// Write your code here
+	int binary_input,rem=0,decimal_output=0,p = 0;
+    cin>>binary_input;
+    
+    while(binary_input!=0)
+    {
+        rem = binary_input%10;
+        decimal_output += rem*pow(2,p);
+        binary_input/=10;
+        p++;
+    }
+    
+    cout<<decimal_output<<endl;
+}
