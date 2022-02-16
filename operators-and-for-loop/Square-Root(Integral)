@@ -1,0 +1,21 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+	// Write your code here
+	int num=0;
+    cin>>num;
+    
+    if(num==1 || num==0)
+    {
+        cout<<num<<endl;
+    }
+    for(int i=1;i<=num;i++)
+    {
+        if(i*i>num)
+        {
+            cout<<i-1<<endl;
+            break;
+        }
+    }
+}
