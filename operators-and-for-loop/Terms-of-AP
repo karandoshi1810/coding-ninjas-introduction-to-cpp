@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+	// Write your code here
+    int n=0,count=0,i=1;
+    cin>>n;
+    
+    while(count!=n)
+    {
+        int ans = (3*i)+2;
+        if(ans%4==0)
+        {
+            i++;
+            continue;
+        }
+        cout<<(3*i)+2<<" ";
+        count++;
+        i++;
+    }
+    cout<<endl;
+	
+}
