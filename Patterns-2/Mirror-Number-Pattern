@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+
+
+int main(){
+
+       /*  Read input as specified in the question.
+	* Print output as specified in the question.
+	*/
+    int n=0;
+    cin>>n;
+    
+    for(int i=1;i<=n;i++)
+    {
+        int num=1;
+        for(int j=1;j<=n-i;j++)
+        {
+            cout<<" ";
+        }
+        
+        for(int k=0;k<i;k++)
+        {
+          cout<<num;
+          num++;
+        }
+        cout<<endl;
+    }
+  
+}
+
+
