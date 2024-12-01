@@ -1,0 +1,234 @@
+#include <iostream>
+using namespace std;
+
+struct Node
+{
+    int data;
+    Node *next;
+    Node(int val)
+    {
+        data = val;
+        next = NULL;
+    }
+};
+
+class Stack
+{
+private:
+    Node *top = NULL;
+    int capacity = 0;
+    int getSize()
+    {
+        if (top == NULL)
+        {
+            return 0;
+        }
+        Node *temp = top;
+        int size = 0;
+        while (temp != NULL)
+        {
+            size++;
+            temp = temp->next;
+        }
+        return size;
+    }
+
+public:
+    Stack(int cap)
+    {
+        capacity = cap;
+    }
+    void push()
+    {
+        int data = 0;
+        cout << "Please enter data" << endl;
+        cin >> data;
+        Node *newNode = new Node(data);
+        if (isEmpty())
+        {
+            top = newNode;
+            return;
+        }
+        if (isFull())
+        {
+            cout << "Stack is full. Please consider deleting some elements." << endl;
+            return;
+        }
+        else
+        {
+            cout << "Adding new node" << endl;
+            newNode->next = top;
+            top = newNode;
+            return;
+        }
+    }
+    int pop()
+    {
+        if (isEmpty())
+        {
+            cout << "Stack is empty..." << endl;
+            return 0;
+        }
+        if (top->next == NULL)
+        {
+            cout << "Deleting last node of the stack..." << endl;
+            free(top);
+            top = NULL;
+            cout << "Deleted the last node of the stack" << endl;
+            return 0;
+        }
+        else
+        {
+            Node *temp = top;
+            int nodeData = temp->data;
+            top = temp->next;
+            free(temp);
+            return nodeData;
+        }
+    }
+    void getTop()
+    {
+        if (isEmpty())
+        {
+            return;
+        }
+        cout << "Current top of the stack is:" << top->data << endl;
+        return;
+    }
+    void printSize()
+    {
+        if (isEmpty())
+        {
+            return;
+        }
+        Node *temp = top;
+        int size = 0;
+        while (temp != NULL)
+        {
+            size++;
+            temp = temp->next;
+        }
+        cout << "Current size of stack is:" << size << endl;
+    }
+    bool isEmpty()
+    {
+        if (top == NULL)
+        {
+            cout << "Stack is empty" << endl;
+            return true;
+        }
+        cout << "Stack is not empty" << endl;
+        return false;
+    }
+    bool isFull()
+    {
+        if (getSize() == capacity)
+        {
+            cout << "Stack is full" << endl;
+            return true;
+        }
+        cout << "Stack is not full" << endl;
+        return false;
+    }
+    void printStack()
+    {
+        if (top == NULL)
+        {
+            cout << "Stack is empty..." << endl;
+            return;
+        }
+        Node *temp = top;
+        while (temp != NULL)
+        {
+            cout << temp->data << "->";
+            temp = temp->next;
+        }
+        cout << endl;
+    }
+};
+
+int displayMenu()
+{
+    int input = 0;
+    cout << "Enter 1 to push element in stack" << endl;
+    cout << "Enter 2 to pop element from stack" << endl;
+    cout << "Enter 3 to print top of the stack" << endl;
+    cout << "Enter 4 to get current size of stack" << endl;
+    cout << "Enter 5 to check if stack is empty" << endl;
+    cout << "Enter 6 to check if stack is full" << endl;
+    cout << "Enter 7 to print the stack" << endl;
+    cout << "Enter -1 to exit" << endl;
+    cin >> input;
+    return input;
+}
+
+int main()
+{
+    cout << "Initiating stack..." << endl;
+    int stackCapacity = 0;
+    cout << "Please enter stack capacity" << endl;
+    cin >> stackCapacity;
+    Stack *stack = new Stack(stackCapacity);
+    int input = displayMenu();
+    while (input != -1)
+    {
+        switch (input)
+        {
+        case 1:
+        {
+            stack->push();
+            stack->printStack();
+            input = displayMenu();
+            break;
+        }
+        case 2:
+        {
+            int deletedData = stack->pop();
+            cout << "Deleted top:" << deletedData << endl;
+            stack->printStack();
+            input = displayMenu();
+            break;
+        }
+        case 3:
+        {
+            stack->getTop();
+            stack->printStack();
+            input = displayMenu();
+            break;
+        }
+        case 4:
+        {
+            stack->printSize();
+            stack->printStack();
+            input = displayMenu();
+            break;
+        }
+        case 5:
+        {
+            stack->isEmpty();
+            stack->printStack();
+            input = displayMenu();
+            break;
+        }
+        case 6:
+        {
+            stack->isFull();
+            stack->printStack();
+            input = displayMenu();
+            break;
+        }
+        case 7:
+        {
+            stack->printStack();
+            input = displayMenu();
+            break;
+        }
+        case -1:
+            break;
+
+        default:
+            break;
+        }
+    }
+    return 0;
+}
