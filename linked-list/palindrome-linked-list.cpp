@@ -45,7 +45,7 @@ public:
         Compare	the	first	half	and	second	half.
         Construct	the	original	linked	list	by	reversing	the	second	half	again	and
         attaching	it	back	to	the	first	half.
-        
+
         Input: 1->0->1->0->NULL
      */
     bool checkPalindrome()
@@ -70,9 +70,9 @@ public:
         // 2) slow->next to end of original list
         Node *rightListHead = slow->next;
         slow->next = NULL;
-        //function which will reverse the list
+        // function which will reverse the list
         Node *reversedHeadFromMid = reverseFromMidOfLinkedList(rightListHead);
-        //save the copy of reversed list head
+        // save the copy of reversed list head
         Node *reversedHeadFromMidCopy = reversedHeadFromMid;
         cout << "Printing left list after reversal" << endl;
         printList();
@@ -85,12 +85,12 @@ public:
         cout << endl;
         temp = head;
         reversedHeadFromMidCopy = reversedHeadFromMid;
-        //call function which will validate if the ll is palindrome or not
-        //pass both left and right list.
+        // call function which will validate if the ll is palindrome or not
+        // pass both left and right list.
         bool isPalindrome = validate(temp, reversedHeadFromMidCopy);
         cout << "Is palindrome:" << isPalindrome << endl;
-        //rejoin both the left and right list
-        //iterate left list till its next point to null
+        // rejoin both the left and right list
+        // iterate left list till its next point to null
         temp = head;
         while (temp->next)
         {
@@ -98,28 +98,41 @@ public:
             temp = temp->next;
         }
         reversedHeadFromMidCopy = reversedHeadFromMid;
-        //reverse the reversed list(right) again and it will return the 
-        //second half of original list.
-        //point the left list's next to the node returned by the function after reversal.
-        //It will create the original link back.
+        // reverse the reversed list(right) again and it will return the
+        // second half of original list.
+        // point the left list's next to the node returned by the function after reversal.
+        // It will create the original link back.
         temp->next = reverseFromMidOfLinkedList(reversedHeadFromMidCopy);
         printList();
         return isPalindrome;
     }
     bool validate(Node *headFromBeginning, Node *reversedHeadFromMid)
     {
-        //if either of the list is null return true.
-        //why true, because if we have reached this condition
-        //that means the data of prevuious nodes were matching
-        //hence the list was palindrome till here.
-        if (headFromBeginning->next == NULL || reversedHeadFromMid->next == NULL)
+        /*if either of the lists' next is null return true.
+        why true, because if we have reached this condition
+        that means the data of prevuious nodes were matching
+        hence the list was palindrome till here.*/
+        /*if (headFromBeginning->next == NULL || reversedHeadFromMid->next == NULL)
+        {
+            if(headFromBeginning->data == reversedHeadFromMid->data)
+            {
+                return true;
+            }
+            return false;
+        }*/
+
+        // if either of the list is null return true.
+        // why true, because if we have reached this condition
+        // that means the data of prevuious nodes were matching
+        // hence the list was palindrome till here.
+        if (headFromBeginning == NULL || reversedHeadFromMid == NULL)
         {
             return true;
         }
-        //if current data of both lists is same then call recursion for
-        //next nodes of both lists. Calling it will give rise to 2 possibilities
-        //if the data of both the next nodes is not same it would return false and ultimately the function will return false
-        //if either of them is NULL then the base condition will return true and eventually the function will return true.
+        // if current data of both lists is same then call recursion for
+        // next nodes of both lists. Calling it will give rise to 2 possibilities
+        // if the data of both the next nodes is not same it would return false and ultimately the function will return false
+        // if either of them is NULL then the base condition will return true and eventually the function will return true.
         if (headFromBeginning->data == reversedHeadFromMid->data)
         {
             cout << "headFromBeginning->data == reversedHeadFromMid->data" << endl;
