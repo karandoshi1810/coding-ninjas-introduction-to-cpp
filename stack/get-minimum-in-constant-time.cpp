@@ -56,6 +56,37 @@ struct Stack
     }
 };
 
+struct optimizedMinStack
+{
+    stack<pair<int,int>> minStack;
+    void push(int element)
+    {
+        int updatedMin = minStack.empty() ? element : min(element,minStack.top().second);
+        
+        minStack.push({element,updatedMin});
+        return;
+    }
+    void pop()
+    {
+        if(minStack.empty())
+        {
+            cout<<"Stack is empty"<<endl;
+            return;
+        }
+        cout<<"Popping pair:"<<" Element:"<<minStack.top().first<<" Min:"<<minStack.top().second<<endl;
+        minStack.pop();
+    }
+    void getMin()
+    {
+        if(minStack.empty())
+        {
+            cout<<"Stack is empty"<<endl;
+            return;
+        }
+        cout<<"Min:"<<minStack.top().second<<endl;
+    }
+};
+
 int main()
 {
     Stack s;
@@ -67,5 +98,15 @@ int main()
     s.push(1);
     s.getMin();
     s.push(5);
+
+    optimizedMinStack st;
+    st.push(2);
+    st.push(6);
+    st.getMin();
+    st.push(4);
+    st.getMin();
+    st.push(1);
+    st.getMin();
+    st.push(5);
     return 0;
 }
